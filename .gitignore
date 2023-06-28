@@ -160,3 +160,7 @@ cython_debug/
 #.idea/
 
 .vscode
+*_version.py
+
+# Images
+*.png

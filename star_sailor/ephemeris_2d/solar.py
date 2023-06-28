@@ -1,6 +1,6 @@
-from star_sailor.constants import SUN_POSITION, R_EARTH
-
 import numpy as np
+
+from star_sailor.constants import R_EARTH, SUN_POSITION
 
 
 def r_sun_rel_spacecraft(state: np.ndarray) -> np.ndarray:

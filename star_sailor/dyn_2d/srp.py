@@ -28,15 +28,13 @@ def solar_radiation_pressure(
 
     solar_sail_normal = np.array([np.cos(orientation_angle), np.sin(orientation_angle)])
 
-    r_sun_rel_spacecraft = r_sun_rel_spacecraft(state)
+    rsrs = r_sun_rel_spacecraft(state)
 
-    if r_sun_rel_spacecraft @ solar_sail_normal < 0:
+    if rsrs @ solar_sail_normal < 0:
         # The solar sail is not facing the sun
         solar_sail_normal = -solar_sail_normal
 
-    alpha = np.arccos(
-        r_sun_rel_spacecraft @ solar_sail_normal / np.linalg.norm(r_sun_rel_spacecraft)
-    )
+    alpha = np.arccos(rsrs @ solar_sail_normal / np.linalg.norm(rsrs))
 
     magnitude = SOLAR_PHOTON_PRESSURE * area_over_mass * np.cos(alpha) ** 2
 
